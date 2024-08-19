@@ -7,4 +7,3 @@ services:
     container_name: velodyne_ros2
     network_mode: "host"
     tty: true
-
