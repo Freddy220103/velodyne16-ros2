@@ -10,6 +10,10 @@ Author: [Alfredo Gómez Mendoza](https://github.com/Freddy220103) (2024)
 ## 0. Overview
 This repository contains a Dockerfile and all the documentation required for setting up and launching a [Velodyne 3D lidar](https://velodynelidar.com/surround-lidar/) such as the VLP-16 with the [Robot Operating System ROS 2](https://docs.ros.org/en/humble/index.html). Tested on Velodyne-16 layered LiDAR3D.
 
+The velodyne zip, contains the files necessary to use the velodyne libraries. If you already have the folder in your ros2 workspace/src, don't add the folder if preexisting. 
+
+For the docker folder, be sure to have it in your home. 
+
 
 ## 1. Hardware and connections
 The Velodyne lidars are common in two different versions, with an **interface box** or with an **8-pin M12 connector** (M12MP-A) only. The ones with interface boxes are generally quite expensive on the second-hand market while the ones with M12 connector often go comparably cheap.
@@ -21,7 +25,7 @@ The Velodyne lidars are common in two different versions, with an **interface bo
 The interface box already comes with an overcurrent protection and gives you access to an Ethernet port as well as a power connector. For the 8-pin power connector on the other hand you will have to create your own cable. This can though be done with comparably little effort (without cutting the cable). In case you bought one without the interface box have a look at the **[cabling guide](./doc/CablingGuide.md) in this repository for information on making your own cable**.
 
 ## 2. Configuring the initial set-up
-The set-up is similar to the Velodyne [VLP-16](http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16) and the [HDL-32E](http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20HDL-32E) lidar in ROS. As a first step we will have to **find out which network interface our lidar is connected to**. For this launch the following command 
+The set-up is similar to the Velodyne [VLP-16](http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16) and the [HDL-32E](http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20HDL-32E) lidar in ROS. I recommend to use the following commands, as the last mentioned tutorial is for ROS, not ROS2. As a first step for the ROS2 tutorial we will have to **find out which network interface our lidar is connected to**. For this launch the following command 
 
 ```bash
 $ for d in /sys/class/net/*; do echo "$(basename ${d}): $(cat $d/{carrier,operstate} | tr '\n' ' ')"; done
@@ -104,7 +108,7 @@ Now you should be able to open the webpage [http://192.168.1.201](http://192.168
 ![Velodyne user interface](./media/velodyne-user-interface.png)
 
 ## 3. Configuring the Docker necessary files
-Be sure to install all the docker files necessary. Dockers need to have an exact configuration for the architecture of each device. In my case the architecture is amd64, be sure to change that on yours so your Docker doesn't give you any problems.
+Be sure to install all the docker files necessary (they are available in the github). Dockers need to have an exact configuration for the architecture of each device. In my case the architecture is amd64, be sure to change that on yours so your Docker doesn't give you any problems. 
 
 Inside your Dockerfile make sure to use the `network_mode` `host` option:
 
@@ -121,7 +125,7 @@ Allow the container to display contents on your host machine by typing
 $ xhost +local:root
 ```
 
-Then build the Docker container with
+The docker files are already setup for architecture amd64. Then build the Docker container with:
 
 ```shell
 $ docker compose -f docker-compose-gui.yml build
