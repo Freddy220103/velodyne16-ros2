@@ -125,13 +125,13 @@ Allow the container to display contents on your host machine by typing
 $ xhost +local:root
 ```
 
-The docker files are already setup for architecture amd64. Then build the Docker container with:
+The docker files are already setup for architecture amd64. Go to your docker folder (/docker) and then build the Docker container with:
 
 ```shell
 $ docker compose -f docker-compose-gui.yml build
 ```
 or directly with the [`devcontainer` in Visual Studio Code](https://code.visualstudio.com/docs/devcontainers/containers). For Nvidia graphic cards the file `docker-compose-gui-nvidia.yml` in combination with the [`nvidia-container-runtime`](https://nvidia.github.io/nvidia-container-runtime/) has to be used instead.
-After it is done building, **connect the Velodyne lidar**, start the container
+After it is done building, **connect the Velodyne lidar**, start the container.  Go to your docker folder (/docker) and run the following command:
 
 ```shell
 $ docker compose -f docker-compose-gui.yml up
