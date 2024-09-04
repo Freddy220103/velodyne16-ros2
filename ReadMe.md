@@ -171,3 +171,7 @@ $ ros2 run rviz2 rviz2 -f velodyne
 in another terminal and display the pointcloud published by the Velodyne.
 
 ![Velodyne VLP-16 visualization in Rviz](./media/velodyne-rviz2.png)
+
+
+You should have at least 3 terminals (RViz, the launchfile and the docker running)
+![Terminal with all commands that should be running](./media/terminals.png)
