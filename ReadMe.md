@@ -168,7 +168,7 @@ Finally **visualize the points with Rviz** by launching
 ```shell
 $ ros2 run rviz2 rviz2 -f velodyne
 ```
-in another terminal and display the pointcloud published by the Velodyne.
+in another terminal and display the pointcloud published by the Velodyne. The topic with the PointCloud should be called /velodyne_points
 
 ![Velodyne VLP-16 visualization in Rviz](./media/velodyne-rviz2.png)
 
