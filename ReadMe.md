@@ -108,7 +108,8 @@ Now you should be able to open the webpage [http://192.168.1.201](http://192.168
 ![Velodyne user interface](./media/velodyne-user-interface.png)
 
 ## 3. Configuring the Docker necessary files
-Be sure to install all the docker files necessary (they are available in the github). Dockers need to have an exact configuration for the architecture of each device. In my case the architecture is amd64, be sure to change that on yours so your Docker doesn't give you any problems. 
+Be sure to install all the docker files necessary (they are available in the github). Also install the necessary commands to manipulate the dockers, you can use: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository.
+ Dockers need to have an exact configuration for the architecture of each device. In my case the architecture is amd64, be sure to change that on yours so your Docker doesn't give you any problems. 
 
 Inside your Dockerfile make sure to use the `network_mode` `host` option:
 
